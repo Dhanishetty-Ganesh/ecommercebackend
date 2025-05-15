@@ -11,7 +11,7 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure--jn^v2k!&%f6r##4l=l(rc+3n$e+o+)%o%3u@2rah^feq%epeg')
 
 # Allow Render and Vercel
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', '.vercel.app']
+ALLOWED_HOSTS = ['your-render-service-name.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
@@ -33,7 +33,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # For static files in production
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,7 +69,7 @@ WSGI_APPLICATION = 'ecommerce_backend.wsgi.application'
 
 # DATABASE (Switch between local and cloud automatically)
 DATABASES = {
-    'default': dj_database_url.config(default=f"sqlite:///{BASE_DIR}/db.sqlite3")
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
 }
 
 # Password validation
